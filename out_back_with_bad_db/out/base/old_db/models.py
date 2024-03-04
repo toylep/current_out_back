@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Companies(models.Model):
-    name = models.CharField(
-        max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
-    )
+    name = models.CharField(max_length=255, db_collation="utf8mb3_general_ci")
+    image = models.URLField(max_length=1000, null=True)
+    agreements = models.CharField(max_length=255, null=True)
 
     class Meta:
         db_table = "companies"
