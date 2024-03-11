@@ -42,6 +42,21 @@ class CompanyListView(ListAPIView):
     serializer_class = CompanySerializer
 
 
+class CompanyCreateView(CreateAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
+
+
 class CompanySingleView(RetrieveUpdateDestroyAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompanySerializer
+
+
+class FacultyCreateView(CreateAPIView):
+    queryset = Faculty.objects.all()
+    serializer_class = FacultySerializer
+
+
+class FacultySingleView(RetrieveUpdateDestroyAPIView):
+    queryset = Faculty.objects.all()
+    serializer_class = FacultySerializer

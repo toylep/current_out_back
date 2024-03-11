@@ -20,7 +20,7 @@ class SpecialitySerializer(ModelSerializer):
 
 class FacultySerializer(ModelSerializer):
 
-    specialities = StringRelatedField(many=True)
+    specialities = StringRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Faculty
