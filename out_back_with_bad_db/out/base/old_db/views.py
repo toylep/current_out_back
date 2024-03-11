@@ -40,3 +40,8 @@ class PracticesList(ListAPIView):
 class CompanyListView(ListAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompanySerializer
+
+
+class CompanySingleView(RetrieveUpdateDestroyAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
