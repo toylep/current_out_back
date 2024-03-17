@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     'base',
+    'olddb',
     'drf_spectacular'
 ]
 
@@ -90,11 +91,12 @@ WSGI_APPLICATION = "out.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "practices",
+        "NAME": "example",
         "USER": "localhost",
         "PASSWORD": "228322",
         "HOST": "localhost",
         "PORT": "3306",
+        'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB'},
     }
 }
 

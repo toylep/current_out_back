@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from base.old_db.models import Companies
+from olddb.models import Companies
 from base.models import DocLink, Practice
-from base.old_db.serializers import CompanySerializer
+from olddb.serializers import CompanySerializer
 
 
 class DockLinkSerializer(ModelSerializer):

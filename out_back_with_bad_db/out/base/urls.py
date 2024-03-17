@@ -1,21 +1,17 @@
 from django.urls import path
-from base.old_db.views import (
-    FacultyList,
+
+from base.views import (
+    DocLinkCreateView,
     PracticesList,
     PracticeCreateView,
     CompanyListView,
-    ThemeCreateView,
     SpecilityCreateView,
     CompanySingleView,
-    FacultyCreateView,
-    FacultySingleView,
     CompanyCreateView,
-)
-from base.views import DocLinkCreateView
+    ThemeCreateView,
+    )
 urlpatterns = [
-    path("faculty/", FacultyList.as_view(), name="faculty_list"),
-    path("faculty/", FacultyCreateView.as_view(), name="faculty_add"),
-    path("faculty/<int:pk>", FacultySingleView.as_view(), name="faculty_single"),
+   
     path("practice/", PracticesList.as_view(), name="practice_list"),
     path("practice/add", PracticeCreateView.as_view(), name="practice_add"),
     path("company/", CompanyListView.as_view(), name="company_list"),
