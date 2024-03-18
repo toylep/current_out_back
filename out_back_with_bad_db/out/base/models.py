@@ -13,7 +13,7 @@ class Theme(models.Model):
     
 
 class Practice(models.Model):
-    name = models.CharField(max_length=255, null=True)
+    name = models.CharField(max_length=255, null=True, db_collation="utf8mb3_general_ci")
     company = models.ForeignKey(
         Companies, on_delete=models.DO_NOTHING, related_name="company"
     )

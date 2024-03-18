@@ -34,7 +34,7 @@ class Faculty(models.Model):
     name = models.CharField(max_length=255, db_collation='utf8mb3_general_ci', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'faculty'
 
 

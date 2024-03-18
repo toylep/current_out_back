@@ -1,18 +1,17 @@
-from django.shortcuts import render
 from base.serializers import DockLinkSerializer
-from base.models import Practice, Companies, Speciality, DocLink, Theme
-from base.serializers import PracticeAddSerializer, PracticeListSerializer
-from olddb.serializers import (
-    CompanySerializer,
-    FacultySerializer,
-    SpecialitySerializer,
+from base.serializers import (
+    PracticeAddSerializer,
+    PracticeListSerializer,
     ThemeSerializer,
+    SpecialitySerializer,
 )
+
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
+from base.models import Practice, DocLink, Speciality, Theme
 from django_filters import rest_framework as filters
 
 # Create your views here.
@@ -33,21 +32,6 @@ class PracticesList(ListAPIView):
     serializer_class = PracticeListSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ("faculty",)
-
-
-class CompanyListView(ListAPIView):
-    queryset = Companies.objects.all()
-    serializer_class = CompanySerializer
-
-
-class CompanyCreateView(CreateAPIView):
-    queryset = Companies.objects.all()
-    serializer_class = CompanySerializer
-
-
-class CompanySingleView(RetrieveUpdateDestroyAPIView):
-    queryset = Companies.objects.all()
-    serializer_class = CompanySerializer
 
 
 class DocLinkCreateView(CreateAPIView):

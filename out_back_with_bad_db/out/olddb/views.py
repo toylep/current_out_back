@@ -1,4 +1,3 @@
-from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.generics import (
@@ -7,8 +6,8 @@ from rest_framework.generics import (
     RetrieveUpdateDestroyAPIView,
 )
 # from models import Faculty
-from olddb.serializers import CompanySerializer, FacultySerializer, SpecialitySerializer, ThemeSerializer
-from olddb.models import Faculty
+from olddb.serializers import CompanySerializer, FacultySerializer
+from olddb.models import Faculty,Companies
 from django_filters import rest_framework as filters
 
 
@@ -25,3 +24,19 @@ class FacultyCreateView(CreateAPIView):
 class FacultySingleView(RetrieveUpdateDestroyAPIView):
     queryset = Faculty.objects.all()
     serializer_class = FacultySerializer
+
+
+class CompanyListView(ListAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
+
+
+class CompanyCreateView(CreateAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
+
+class CompanySingleView(RetrieveUpdateDestroyAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanySerializer
+
+

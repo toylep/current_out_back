@@ -9,14 +9,7 @@ class CompanySerializer(ModelSerializer):
     class Meta:
         model = Companies
         fields = "__all__"
-
-
-class SpecialitySerializer(ModelSerializer):
-
-    class Meta:
-        model = Speciality
-        fields = "__all__"
-
+        
 
 class FacultySerializer(ModelSerializer):
 
@@ -27,9 +20,4 @@ class FacultySerializer(ModelSerializer):
         fields = "__all__"
 
 
-class ThemeSerializer(ModelSerializer):
 
-    class Meta:
-        model = Theme
-        fields = '__all__'
-        write_only_fields = ('company',)
