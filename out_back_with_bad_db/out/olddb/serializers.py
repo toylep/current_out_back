@@ -9,7 +9,7 @@ class CompanySerializer(ModelSerializer):
     class Meta:
         model = Companies
         fields = "__all__"
-        
+
 
 class FacultySerializer(ModelSerializer):
 
@@ -18,6 +18,3 @@ class FacultySerializer(ModelSerializer):
     class Meta:
         model = Faculty
         fields = "__all__"
-
-
-
