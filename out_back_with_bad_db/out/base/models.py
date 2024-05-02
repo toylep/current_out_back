@@ -6,8 +6,8 @@ class Theme(models.Model):
     name = models.CharField(
         max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
     )
-    company = models.ForeignKey(
-        Companies, models.DO_NOTHING, blank=True, null=True, related_name="themes"
+    faculty = models.ForeignKey(
+        Faculty, models.DO_NOTHING, blank=True, null=True, related_name="themes"
     )
 
     def __str__(self):
