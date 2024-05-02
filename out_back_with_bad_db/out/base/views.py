@@ -2,7 +2,7 @@ from base.serializers import DockLinkSerializer
 from base.serializers import (
     PracticeAddSerializer,
     PracticeListSerializer,
-    ThemeSerializer,
+    #ThemeSerializer,
     SpecialitySerializer,
 )
 
