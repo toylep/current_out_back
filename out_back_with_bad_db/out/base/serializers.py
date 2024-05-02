@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from base.models import DocLink, Practice, Speciality, Theme
+from base.models import DocLink, Practice, Speciality#, Theme
 from olddb.serializers import CompanySerializer
 
 
@@ -30,9 +30,9 @@ class SpecialitySerializer(ModelSerializer):
         model = Speciality
         fields = "__all__"
     
-class ThemeSerializer(ModelSerializer):
+# class ThemeSerializer(ModelSerializer):
 
-    class Meta:
-        model = Theme
-        fields = '__all__'
-        write_only_fields = ('company',)
+#     class Meta:
+#         model = Theme
+#         fields = '__all__'
+#         write_only_fields = ('company',)
