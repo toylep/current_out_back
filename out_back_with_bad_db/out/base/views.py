@@ -11,7 +11,7 @@ from rest_framework.generics import (
     CreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from base.models import Practice, DocLink, Speciality, Theme
+from base.models import Practice, DocLink, Speciality#, Theme
 from django_filters import rest_framework as filters
 
 # Create your views here.
@@ -47,6 +47,6 @@ class DocLinkCreateView(CreateAPIView):
     serializer_class = DockLinkSerializer
 
 
-class ThemeCreateView(CreateAPIView):
-    queryset = Theme.objects.all()
-    serializer_class = ThemeSerializer
+# class ThemeCreateView(CreateAPIView):
+#     queryset = Theme.objects.all()
+#     serializer_class = ThemeSerializer
