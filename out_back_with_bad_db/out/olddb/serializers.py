@@ -3,12 +3,12 @@ from olddb.models import Companies, Faculty
 from base.models import Speciality#, Theme
 
 
-# class CompanySerializer(ModelSerializer):
-#     themes = StringRelatedField(many=True, read_only=True)
+class CompanySerializer(ModelSerializer):
+    # themes = StringRelatedField(many=True, read_only=True)
 
-#     class Meta:
-#         model = Companies
-#         fields = "__all__"
+    class Meta:
+        model = Companies
+        fields = "__all__"
 
 
 class FacultySerializer(ModelSerializer):
