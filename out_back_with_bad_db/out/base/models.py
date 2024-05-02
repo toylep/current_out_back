@@ -1,17 +1,5 @@
 from django.db import models
-from olddb.models import Companies, Faculty
-
-
-class Theme(models.Model):
-    name = models.CharField(
-        max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
-    )
-    faculty = models.ForeignKey(
-        Faculty, models.DO_NOTHING, blank=True, null=True, related_name="themes"
-    )
-
-    def __str__(self):
-        return self.name
+from olddb.models import Companies, Faculty,
 
 
 class Practice(models.Model):
@@ -28,6 +16,17 @@ class Practice(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
+class Theme(models.Model):
+    name = models.CharField(
+        max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
+    )
+    practice = models.ForeignKey(
+        Practice, models.DO_NOTHING, blank=True, null=True, related_name="themes"
+    )
+
+    def __str__(self):
+        return self.name
 
 class DocLink(models.Model):
 
