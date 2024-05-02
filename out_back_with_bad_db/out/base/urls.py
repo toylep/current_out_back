@@ -7,12 +7,14 @@ from base.views import (
     SpecilityCreateView,
     ThemeCreateView,
     SpecialitySingleView,
-    SpecialityList
+    SpecialityList,
+    PracticeSingleView
     )
 urlpatterns = [
    
     path("practice/", PracticesList.as_view(), name="practice_list"),
     path("practice/add", PracticeCreateView.as_view(), name="practice_add"),
+    path("practice/<int:pk>", PracticeSingleView.as_view(), name="practice_single"),
     path("theme/add", ThemeCreateView.as_view(), name="company_add"),
     path("speciality/add", SpecilityCreateView.as_view(), name="speciality_add"),
     path("speciality/", SpecialityList.as_view(), name="speciality_list"),
