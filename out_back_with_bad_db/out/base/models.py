@@ -21,8 +21,8 @@ class Theme(models.Model):
     name = models.CharField(
         max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
     )
-    practice = models.ForeignKey(
-        Practice, models.DO_NOTHING, blank=True, null=True, related_name="themes"
+    company = models.ForeignKey(
+        Companies, models.DO_NOTHING, blank=True, null=True, related_name="themes"
     )
 
     def __str__(self):
