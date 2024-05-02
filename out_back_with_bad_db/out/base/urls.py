@@ -5,7 +5,7 @@ from base.views import (
     PracticesList,
     PracticeCreateView,
     SpecilityCreateView,
-    ThemeCreateView,
+    #ThemeCreateView,
     SpecialitySingleView,
     SpecialityList
     )
