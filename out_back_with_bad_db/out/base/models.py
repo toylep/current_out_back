@@ -17,16 +17,16 @@ class Practice(models.Model):
         return self.name
 
 
-class Theme(models.Model):
-    name = models.CharField(
-        max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
-    )
-    company = models.ForeignKey(
-        Companies, models.DO_NOTHING, blank=True, null=True, related_name="themes"
-    )
+# class Theme(models.Model):
+#     name = models.CharField(
+#         max_length=255, db_collation="utf8mb3_general_ci", blank=True, null=True
+#     )
+#     company = models.ForeignKey(
+#         Companies, models.DO_NOTHING, blank=True, null=True, related_name="themes"
+#     )
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class DocLink(models.Model):
 
