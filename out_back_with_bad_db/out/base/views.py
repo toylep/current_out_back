@@ -21,6 +21,14 @@ class SpecilityCreateView(CreateAPIView):
     queryset = Speciality.objects.all()
     serializer_class = SpecialitySerializer
 
+class SpecialityList(ListAPIView):
+    queryset = Speciality.objects.all()
+    serializer_class = SpecialitySerializer
+
+class SpecialitySingleView(RetrieveUpdateDestroyAPIView):
+    queryset = Speciality.objects.all()
+    serializer_class = SpecialitySerializer
+
 
 class PracticeCreateView(CreateAPIView):
     queryset = Practice.objects.all()
