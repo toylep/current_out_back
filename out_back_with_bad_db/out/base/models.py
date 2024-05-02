@@ -1,5 +1,5 @@
 from django.db import models
-from olddb.models import Companies, Faculty,
+from olddb.models import Companies, Faculty
 
 
 class Practice(models.Model):
