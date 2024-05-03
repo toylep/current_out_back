@@ -15,7 +15,7 @@ class Companies(models.Model):
     )
     image = models.URLField(max_length=1000, null=True)
     agreements = models.CharField(max_length=255, null=True)
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,on_delete=models.DO_NOTHING,related_name="company",null=True)
     class Meta:
         managed = True
         db_table = "companies"
