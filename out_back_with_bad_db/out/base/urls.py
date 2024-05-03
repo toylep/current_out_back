@@ -8,7 +8,9 @@ from base.views import (
     ThemeCreateView,
     SpecialitySingleView,
     SpecialityList,
-    PracticeSingleView
+    PracticeSingleView,
+    UserAuthView,
+    UserCreateView,
     )
 urlpatterns = [
    
@@ -19,5 +21,7 @@ urlpatterns = [
     path("speciality/add", SpecilityCreateView.as_view(), name="speciality_add"),
     path("speciality/", SpecialityList.as_view(), name="speciality_list"),
     path("speciality/<int:pk>", SpecialitySingleView.as_view(), name="speciality_single"),
-    path("doclinks/add", DocLinkCreateView.as_view(), name="doclinks-add")
+    path("doclinks/add", DocLinkCreateView.as_view(), name="doclinks-add"),
+    path("auth/", UserAuthView.as_view(), name="auth"),
+    path("user/add", UserCreateView.as_view(), name="user-add"),
 ]
