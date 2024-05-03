@@ -4,16 +4,21 @@ from base.serializers import (
     PracticeListSerializer,
     ThemeSerializer,
     SpecialitySerializer,
+    UserSerializer,
+    AuthSerializer,
 )
 
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,
     RetrieveUpdateDestroyAPIView,
+    GenericAPIView
 )
 from base.models import Practice, DocLink, Speciality, Theme
 from django_filters import rest_framework as filters
-
+from django.contrib.auth import User
+from rest_framework.response import Response
+from django.contrib.auth import authenticate
 # Create your views here.
 
 
@@ -54,3 +59,22 @@ class DocLinkCreateView(CreateAPIView):
 class ThemeCreateView(CreateAPIView):
     queryset = Theme.objects.all()
     serializer_class = ThemeSerializer
+
+class UserCreateView(CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserAuthView(GenericAPIView):
+
+    serializer_class = AuthSerializer
+
+    def post(self, request):
+        user = authenticate(
+            username=request.data.get("username"),
+            password=request.data.get("password"),
+        )
+        if user is not None:
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "Wrong credentials"},status=400)

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import User
 
 
 class Companies(models.Model):
@@ -14,7 +15,7 @@ class Companies(models.Model):
     )
     image = models.URLField(max_length=1000, null=True)
     agreements = models.CharField(max_length=255, null=True)
-
+    user = models.OneToOneField(User)
     class Meta:
         managed = True
         db_table = "companies"

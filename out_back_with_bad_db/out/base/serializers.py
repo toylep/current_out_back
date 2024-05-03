@@ -1,7 +1,31 @@
 from rest_framework.serializers import ModelSerializer
 from base.models import DocLink, Practice, Speciality, Theme
 from olddb.serializers import CompanySerializer
+from django.contrib.auth import User
 
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password",
+            "is_staff",
+            "is_superuser",
+        ]
+        write_only_fields = ("password",)
+
+class AuthSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "password",
+        ]
+        write_only_fields = ("password",)  
 
 class DockLinkSerializer(ModelSerializer):
     class Meta:
@@ -13,8 +37,6 @@ class PracticeAddSerializer(ModelSerializer):
     class Meta:
         model = Practice
         fields = "__all__"
-
-
 
 
 class SpecialitySerializer(ModelSerializer):
