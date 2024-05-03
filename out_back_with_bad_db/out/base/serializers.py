@@ -7,15 +7,18 @@ from django.contrib.auth.models import User
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = [ 
+        fields = [
             "username",
             "first_name",
             "last_name",
             "email",
+            "password",
             "is_staff",
             "is_superuser",
         ]
-        write_only_fields = ("password",)
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
 class AuthSerializer(ModelSerializer):
     class Meta:
