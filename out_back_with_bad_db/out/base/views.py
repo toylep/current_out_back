@@ -16,7 +16,7 @@ from rest_framework.generics import (
 )
 from base.models import Practice, DocLink, Speciality, Theme
 from django_filters import rest_framework as filters
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
 # Create your views here.
