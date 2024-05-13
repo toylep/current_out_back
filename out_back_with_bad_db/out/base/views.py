@@ -64,6 +64,12 @@ class UserCreateView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def perform_create(self,serializer):
+        instance = serializer.save()
+        instance.set_password(instance.password)
+        instance.save()
+
+
 class UserAuthView(GenericAPIView):
 
     serializer_class = AuthSerializer
