@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from base.models import DocLink, Practice, Speciality, Theme
 from olddb.serializers import CompanySerializer
 from django.contrib.auth.models import User
-
+from django.contrib.auth.hashers import make_password
 
 class UserSerializer(ModelSerializer):
     class Meta:
@@ -21,6 +21,9 @@ class UserSerializer(ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
+    
+    validate_password = make_password
+
 
 class AuthSerializer(ModelSerializer):
     class Meta:
