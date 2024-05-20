@@ -1,5 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from base.models import DocLink, Practice, Speciality, Theme
+from olddb.models import Companies
 from olddb.serializers import CompanySerializer
 from django.contrib.auth.models import User
 
@@ -63,4 +64,12 @@ class PracticeListSerializer(ModelSerializer):
     themes = ThemeSerializer(many=True)
     class Meta:
         model = Practice
+        fields = "__all__"
+
+
+class CompanyFullSerializer(ModelSerializer):
+
+    doc_links = DockLinkSerializer(many=True)
+    class Meta:
+        model = Companies
         fields = "__all__"

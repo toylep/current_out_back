@@ -1,4 +1,16 @@
-from base.serializers import DockLinkSerializer
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django_filters import rest_framework as filters
+from rest_framework.generics import (
+    ListAPIView,
+    CreateAPIView,
+    RetrieveUpdateDestroyAPIView,
+    GenericAPIView
+)
+from rest_framework.response import Response
+
+from base.models import Practice, DocLink, Speciality, Theme
+from base.serializers import DockLinkSerializer, CompanyFullSerializer
 from base.serializers import (
     PracticeAddSerializer,
     PracticeListSerializer,
@@ -7,18 +19,9 @@ from base.serializers import (
     UserSerializer,
     AuthSerializer,
 )
+from olddb.models import Companies
 
-from rest_framework.generics import (
-    ListAPIView,
-    CreateAPIView,
-    RetrieveUpdateDestroyAPIView,
-    GenericAPIView
-)
-from base.models import Practice, DocLink, Speciality, Theme
-from django_filters import rest_framework as filters
-from django.contrib.auth.models import User
-from rest_framework.response import Response
-from django.contrib.auth import authenticate
+
 # Create your views here.
 
 
@@ -26,9 +29,16 @@ class SpecilityCreateView(CreateAPIView):
     queryset = Speciality.objects.all()
     serializer_class = SpecialitySerializer
 
+
+class CompanyFullListView(ListAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanyFullSerializer
+
+
 class SpecialityList(ListAPIView):
     queryset = Speciality.objects.all()
     serializer_class = SpecialitySerializer
+
 
 class SpecialitySingleView(RetrieveUpdateDestroyAPIView):
     queryset = Speciality.objects.all()
@@ -46,6 +56,7 @@ class PracticesList(ListAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ("faculty",)
 
+
 class PracticeSingleView(RetrieveUpdateDestroyAPIView):
     queryset = Practice.objects.all()
     serializer_class = PracticeListSerializer
@@ -60,18 +71,18 @@ class ThemeCreateView(CreateAPIView):
     queryset = Theme.objects.all()
     serializer_class = ThemeSerializer
 
+
 class UserCreateView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         instance = serializer.save()
         instance.set_password(instance.password)
         instance.save()
 
 
 class UserAuthView(GenericAPIView):
-
     serializer_class = AuthSerializer
 
     def post(self, request):
@@ -83,4 +94,4 @@ class UserAuthView(GenericAPIView):
             serializer = UserSerializer(user)
             return Response(serializer.data)
         else:
-            return Response({"error": "Wrong credentials"},status=400)
+            return Response({"error": "Wrong credentials"}, status=400)
