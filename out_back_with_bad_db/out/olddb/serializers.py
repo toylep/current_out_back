@@ -1,10 +1,17 @@
 from rest_framework.serializers import ModelSerializer, StringRelatedField
 from olddb.models import Companies, Faculty
 from base.models import Speciality, Theme
-
+from base.serializers import DockLinkSerializer
 
 class CompanySerializer(ModelSerializer):
 
+    class Meta:
+        model = Companies
+        fields = "__all__"
+
+class CompanyFullSerializer(ModelSerializer):
+
+    doc_links = DockLinkSerializer(many=True)
     class Meta:
         model = Companies
         fields = "__all__"

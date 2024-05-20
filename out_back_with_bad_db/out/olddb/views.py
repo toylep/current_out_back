@@ -1,15 +1,16 @@
 # Create your views here.
+from django_filters import rest_framework as filters
 from rest_framework.generics import (
     ListAPIView,
     CreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
+from rest_framework.permissions import IsAdminUser
 
+from olddb.models import Faculty, Companies
 # from models import Faculty
 from olddb.serializers import CompanySerializer, FacultySerializer
-from olddb.models import Faculty, Companies
-from django_filters import rest_framework as filters
-from rest_framework.permissions import IsAdminUser
+
 
 class FacultyList(ListAPIView):
     queryset = Faculty.objects.all()
@@ -31,6 +32,11 @@ class CompanyListView(ListAPIView):
     serializer_class = CompanySerializer
 
 
+class CompanyFullListView(ListAPIView):
+    queryset = Companies.objects.all()
+    serializer_class = CompanyFullSerializer
+
+
 class CompanyCreateView(CreateAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompanySerializer
@@ -40,5 +46,3 @@ class CompanyCreateView(CreateAPIView):
 class CompanySingleView(RetrieveUpdateDestroyAPIView):
     queryset = Companies.objects.all()
     serializer_class = CompanySerializer
-
-
